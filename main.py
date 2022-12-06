@@ -46,14 +46,14 @@ class BlackJack():
                 card = self.random_card()
                 self.game["players"][str(player)]["cards"].append(card)
                 #removes the card itself from deck
-                try:
-                    self.deck.remove(card)
-                except:
-                    pass
 
     def random_card(self):
         x = random.choice(self.cards)
         y = random.choice(self.suits)
+        try:
+            self.deck.remove(str(y)+str(x))
+        except:
+            pass
         return str(y)+str(x)
 
     def get_card_val(self,player):
@@ -170,8 +170,6 @@ class BlackJack():
                         break
                     pass
                 self.player_update()
-            
-
      
 num_of_players = 1
 BlackJack(num_of_players).start()
